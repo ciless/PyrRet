@@ -1,0 +1,7 @@
+C:\Users\sqrde\source\repos\PyrRet\PyrRet\bin\Debug\PyrRet.exe.config
+C:\Users\sqrde\source\repos\PyrRet\PyrRet\bin\Debug\PyrRet.exe
+C:\Users\sqrde\source\repos\PyrRet\PyrRet\bin\Debug\PyrRet.pdb
+C:\Users\sqrde\source\repos\PyrRet\PyrRet\obj\Debug\PyrRet.csprojAssemblyReference.cache
+C:\Users\sqrde\source\repos\PyrRet\PyrRet\obj\Debug\PyrRet.csproj.CoreCompileInputs.cache
+C:\Users\sqrde\source\repos\PyrRet\PyrRet\obj\Debug\PyrRet.exe
+C:\Users\sqrde\source\repos\PyrRet\PyrRet\obj\Debug\PyrRet.pdb
