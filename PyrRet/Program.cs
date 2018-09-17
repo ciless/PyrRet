@@ -71,10 +71,19 @@ namespace PyrRet
         {
             if (File.Exists("pyrrec.exe"))
             {
-                Thread handleRefresherThread = new Thread(HandleRefresh);
-                handleRefresherThread.Start();
-                Thread pyrRecUpdateThread = new Thread(PyrRecUpdate);
-                pyrRecUpdateThread.Start();
+                if (File.Exists(GetLogFileName()))
+                {
+                    Thread handleRefresherThread = new Thread(HandleRefresh);
+                    handleRefresherThread.Start();
+                    Thread pyrRecUpdateThread = new Thread(PyrRecUpdate);
+                    pyrRecUpdateThread.Start();
+                } else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("[IO ERROR] " + "PyrRec log file not found");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadKey();
+                }
             } else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
