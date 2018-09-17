@@ -55,13 +55,13 @@ namespace PyrRet
                 if (lastLineOfLog.IndexOf("error") != -1 && lastLineOfLog.IndexOf("192.168.1.4") != -1)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("[ERROR] " + lastLineOfLog);
+                    Console.WriteLine("[PYRREC ERROR] " + "Connection refused");
                     Console.ForegroundColor = ConsoleColor.White;
                     FirstClick();
                     Thread.Sleep(1000);
                     LastClick();
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("[UPDATE] " + DateTime.Now);
+                    Console.WriteLine("[CONNECT] " + DateTime.Now);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 Thread.Sleep(1000);
@@ -69,10 +69,20 @@ namespace PyrRet
         }
         static void Main(string[] args)
         {
-            Thread handleRefresherThread = new Thread(HandleRefresh);
-            handleRefresherThread.Start();
-            Thread pyrRecUpdateThread = new Thread(PyrRecUpdate);
-            pyrRecUpdateThread.Start();
+            if (File.Exists("pyrrec.exe"))
+            {
+                Thread handleRefresherThread = new Thread(HandleRefresh);
+                handleRefresherThread.Start();
+                Thread pyrRecUpdateThread = new Thread(PyrRecUpdate);
+                pyrRecUpdateThread.Start();
+            } else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("[IO ERROR] " + "Please, move program to PyrRec folder");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadKey();
+            }
+            
         }
     }
 }
