@@ -45,6 +45,7 @@ namespace PyrRet
             {
                 mainHandle = Win32.FindWindow("QWidget", "PyrRec");
                 settingsHandle = Win32.FindWindow("QWidget", "Настройки");
+                Thread.Sleep(5000);
             }
         }
         static void PyrRecUpdate()
@@ -58,13 +59,13 @@ namespace PyrRet
                     Console.WriteLine("[PYRREC ERROR] " + "Connection refused");
                     Console.ForegroundColor = ConsoleColor.White;
                     FirstClick();
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2000);
                     LastClick();
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("[CONNECT] " + DateTime.Now);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
             }
         }
         static void Main(string[] args)
