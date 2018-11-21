@@ -1,12 +1,9 @@
-﻿using Mouse_Click_Simulator;
+using Mouse_Click_Simulator;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace PyrRet
 {
@@ -51,22 +48,31 @@ namespace PyrRet
         static void PyrRecUpdate()
         {
             while (true)
-            {           
-                var lastLineOfLog = File.ReadLines(GetLogFileName()).Last();
-                if (lastLineOfLog.IndexOf("error") != -1 && lastLineOfLog.IndexOf("192.168.1.4") != -1)
+            {
+                if (File.Exists(GetLogFileName()))
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("[PYRREC ERROR] " + "Connection refused");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    FirstClick();
+                    var lastLineOfLog = File.ReadLines(GetLogFileName()).Last();
+                    if (lastLineOfLog.IndexOf("error") != -1 && lastLineOfLog.IndexOf("192.168.1.4") != -1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("[PYRREC ERROR] " + "Connection refused");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        FirstClick();
+                        Thread.Sleep(2000);
+                        LastClick();
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("[CONNECT] " + DateTime.Now);
+                        Console.ForegroundColor = ConsoleColor.White;
+                    } 
                     Thread.Sleep(2000);
-                    LastClick();
+                } else
+                {
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("[CONNECT] " + DateTime.Now);
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("[PYRREC INFO] " + "New Date file is not exist. All right.");
+                    Thread.Sleep(2000);
                 }
-                Thread.Sleep(2000);
             }
+            
         }
         static void Main(string[] args)
         {
